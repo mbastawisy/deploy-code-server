@@ -34,7 +34,7 @@ RUN sudo apt install -y wget && \
   rm terraform_1.1.6_linux_amd64.zip && \
   sudo mv terraform /usr/bin/terraform
 
-RUN sud oapt-get update && \
+RUN sudo apt-get update && \
     sudo apt-get install -y \
         unzip \
         curl \
