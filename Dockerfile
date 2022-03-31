@@ -28,7 +28,7 @@ RUN code-server --install-extension hashicorp.terraform
 RUN code-server --install-extension eamodio.gitlens
 
 # upgrade terraform to =1.1.6
-RUN sudo apt install wget unzip
+RUN sudo apt install -y wget
 RUN wget https://releases.hashicorp.com/terraform/1.1.6/terraform_1.1.6_linux_amd64.zip
 RUN unzip terraform_1.1.6_linux_amd64.zip && rm terraform_1.1.6_linux_amd64.zip
 RUN mv terraform /usr/bin/terraform
