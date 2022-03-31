@@ -27,10 +27,6 @@ RUN sudo chown -R coder:coder /home/coder/.local
 RUN code-server --install-extension hashicorp.terraform
 RUN code-server --install-extension eamodio.gitlens
 
-RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-RUN sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-RUN sudo apt install terraform=1.1.6
-
 # upgrade terraform to =1.1.6
 RUN wget https://releases.hashicorp.com/terraform/1.1.6/terraform_1.1.6_linux_amd64.zip
 RUN unzip terraform_1.1.6_linux_amd64.zip && rm terraform_1.1.6_linux_amd64.zip
