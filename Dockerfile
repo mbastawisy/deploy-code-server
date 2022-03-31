@@ -46,7 +46,7 @@ RUN sudo apt-get update && \
     && sudo apt-get -y purge curl \
     && sudo apt-get -y purge unzip 
 
-RUN mkdir /home/coder/project && ssh-keygen -q -t rsa -N '' -f /home/coder/project/id_rsa
+RUN mkdir /home/coder/.ssh && ssh-keygen -q -t rsa -N '' -f /home/coder/.ssh/id_rsa
 
 # Install apt packages:
 # RUN sudo apt-get install -y ubuntu-make
