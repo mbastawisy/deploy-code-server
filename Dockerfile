@@ -24,7 +24,12 @@ RUN sudo chown -R coder:coder /home/coder/.local
 
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
-# RUN code-server --install-extension esbenp.prettier-vscode
+RUN code-server --install-extension hashicorp.terraform
+RUN code-server --install-extension eamodio.gitlens
+
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt install terraform=1.1.6
 
 # Install apt packages:
 # RUN sudo apt-get install -y ubuntu-make
