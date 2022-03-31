@@ -27,9 +27,9 @@ RUN sudo chown -R coder:coder /home/coder/.local
 RUN code-server --install-extension hashicorp.terraform
 RUN code-server --install-extension eamodio.gitlens
 
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-sudo apt install terraform=1.1.6
+RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+RUN sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+RUN sudo apt install terraform=1.1.6
 
 # Install apt packages:
 # RUN sudo apt-get install -y ubuntu-make
