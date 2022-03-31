@@ -28,10 +28,23 @@ RUN code-server --install-extension hashicorp.terraform
 RUN code-server --install-extension eamodio.gitlens
 
 # upgrade terraform to =1.1.6
-RUN sudo apt install -y wget
-RUN wget https://releases.hashicorp.com/terraform/1.1.6/terraform_1.1.6_linux_amd64.zip
-RUN sudo unzip terraform_1.1.6_linux_amd64.zip && rm terraform_1.1.6_linux_amd64.zip
-RUN sudo mv terraform /usr/bin/terraform
+RUN sudo apt install -y wget && \
+  wget https://releases.hashicorp.com/terraform/1.1.6/terraform_1.1.6_linux_amd64.zip && \
+  sudo unzip terraform_1.1.6_linux_amd64.zip && \
+  rm terraform_1.1.6_linux_amd64.zip && \
+  sudo mv terraform /usr/bin/terraform
+
+RUN sud oapt-get update && \
+    sudo apt-get install -y \
+        unzip \
+        curl \
+    && sudo apt-get clean \
+    && sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+    && sudo unzip awscliv2.zip \
+    && sudo ./aws/install \
+    && sudo rm -rf awscliv2.zip \
+    && sudo apt-get -y purge curl \
+    && sudo apt-get -y purge unzip 
 
 # Install apt packages:
 # RUN sudo apt-get install -y ubuntu-make
